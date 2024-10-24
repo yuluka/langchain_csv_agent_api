@@ -10,6 +10,5 @@
       "src": "/(.*)",
       "dest": "src/main.py"
     }
-  ],
-  "files": ["src", "data/data.csv"]
+  ]
 }
