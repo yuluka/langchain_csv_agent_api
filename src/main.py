@@ -4,8 +4,13 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
 from dotenv import load_dotenv
 import os
+from pydantic import BaseModel
 
 from .model.chain.pandas_agent import PandasAgent
+
+
+class ChatRequest(BaseModel):
+    query: str
 
 
 load_dotenv()
@@ -47,8 +52,8 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Security(security))
     return True
 
 
-@app.get("/chat/{query}")
-def chat(query: str, isAuthorized: bool = Depends(verify_token)) -> dict[str, str]:
+@app.post("/chat")
+def chat(chat_request: ChatRequest, isAuthorized: bool = Depends(verify_token)) -> dict[str, str]:
     """
     Endpoint to chat with the selected model.
 
@@ -60,7 +65,7 @@ def chat(query: str, isAuthorized: bool = Depends(verify_token)) -> dict[str, st
     :rtype: dict[str, str]
     """
 
-    return {"bot_response": pandas_agent.invoke(query)}
+    return {"bot_response": pandas_agent.invoke(chat_request.query)}
 
 
 @app.post("/set_llm")
