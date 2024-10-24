@@ -4,5 +4,5 @@ venv
 
 __pycache__/
 
-data/
+data/data.csv
 .vercel
