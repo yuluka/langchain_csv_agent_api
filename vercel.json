@@ -1,14 +1,15 @@
 {
-    "builds": [
-      {
-        "src": "src/main.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "src/main.py"
-      }
-    ]
-  }
+  "builds": [
+    {
+      "src": "src/main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/main.py"
+    }
+  ],
+  "files": ["src", "data/data.csv"]
+}
