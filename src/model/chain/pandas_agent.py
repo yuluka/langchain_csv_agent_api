@@ -19,7 +19,8 @@ class PandasAgent:
         current_dir: str = os.path.dirname(current_dir)
         current_dir: str = os.path.dirname(current_dir)
         current_dir: str = os.path.dirname(current_dir)
-        self.data_path: str = os.path.join(current_dir, "data", "data.csv")
+        # self.data_path: str = os.path.join(current_dir, "data", "data.csv")
+        self.data_path: str = "data/data.csv"
 
         self.load_data()
 
